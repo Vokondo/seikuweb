@@ -1,5 +1,6 @@
 {
   "name": "seiku-website",
+  "homepage": "https://Vokondo.github.io/seiku-website",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -7,6 +8,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "deploy:build": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "framer-motion": "^10.16.4",
