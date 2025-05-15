@@ -36,7 +36,7 @@ const AboutPage: React.FC = () => {
                 className="rounded-lg shadow-2xl"
               />
               <div className="absolute -bottom-6 -right-6 bg-accent-500 text-white px-6 py-4 rounded-lg shadow-lg">
-                <p className="font-semibold">Founded in 2002</p>
+                <p className="font-semibold">Founded in 2019</p>
               </div>
             </motion.div>
           </div>

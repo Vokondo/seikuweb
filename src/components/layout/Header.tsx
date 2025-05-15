@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
+import logo from '../../assets/logo.png';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,9 +48,9 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <img 
-              src="/seiku-logo.png"
-              alt="Seiku Group" 
-              className="h-8 md:h-10"
+              src={logo}
+              alt="Seiku" 
+              className="h-8 md:h-10 w-auto"
             />
           </Link>
 
