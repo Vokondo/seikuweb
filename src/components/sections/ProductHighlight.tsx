@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../ui/ProductCard';
-import metalsImg from '../../assets/metals.jpg';
-import polymersImg from '../../assets/polymers.jpg';
+import metalsImg from '/src/assets/metals.jpg';
+import polymersImg from '/src/assets/polymers.jpg';
 
 const ProductHighlight: React.FC = () => {
   const products = [
@@ -41,8 +41,8 @@ const ProductHighlight: React.FC = () => {
   const featuredProducts = products.filter(product => product.featured);
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4 md:px-8">
+    <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
         <motion.div 
           className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -50,11 +50,11 @@ const ProductHighlight: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+          <div className="w-full md:w-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-4">
               Our Premium Product Categories
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl">
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl">
               We source the highest quality commodities from around the globe to 
               ensure your manufacturing processes run smoothly and efficiently.
             </p>
@@ -67,7 +67,7 @@ const ProductHighlight: React.FC = () => {
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {featuredProducts.map((product, index) => (
             <ProductCard 
               key={product.id} 
