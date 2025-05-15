@@ -3,20 +3,22 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../ui/ProductCard';
+import metalsImg from '../../assets/metals.jpg';
+import polymersImg from '../../assets/polymers.jpg';
 
 const ProductHighlight: React.FC = () => {
   const products = [
     {
       id: 1,
       name: "Industrial Metals",
-      image: "https://images.pexels.com/photos/2088233/pexels-photo-2088233.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: metalsImg,
       description: "High-grade metals including steel alloys, aluminum, copper, and specialty metals for industrial applications.",
       featured: true
     },
     {
       id: 2,
       name: "Polymers & Plastics",
-      image: "https://images.pexels.com/photos/3846969/pexels-photo-3846969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: polymersImg,
       description: "Engineering and commodity polymers for various manufacturing applications, including ABS, PC, PP, and specialty compounds.",
       featured: true
     },

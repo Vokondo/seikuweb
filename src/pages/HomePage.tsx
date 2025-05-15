@@ -6,6 +6,7 @@ import Hero from '../components/sections/Hero';
 import ProductHighlight from '../components/sections/ProductHighlight';
 import TestimonialSection from '../components/sections/TestimonialSection';
 import CTASection from '../components/sections/CTASection';
+import constructionImg from '../assets/construction.jpg';
 
 const HomePage: React.FC = () => {
   const fadeIn = {
@@ -126,7 +127,7 @@ const HomePage: React.FC = () => {
                 description: "Supplying precision materials for electronic device manufacturing."
               },
               {
-                image: "https://images.pexels.com/photos/2233416/pexels-photo-2233416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                image: constructionImg,
                 title: "Construction Materials",
                 description: "Delivering quality raw materials for construction product manufacturing."
               }
