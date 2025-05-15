@@ -1,0 +1,203 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Search, Filter } from 'lucide-react';
+import ProductCard from '../components/ui/ProductCard';
+
+const ProductsPage: React.FC = () => {
+  const categories = ["All", "Metals", "Polymers", "Chemicals", "Raw Materials"];
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const products = [
+    {
+      id: 1,
+      name: "Steel Alloys",
+      image: "https://images.pexels.com/photos/2088233/pexels-photo-2088233.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description: "High-grade steel alloys including carbon steel, stainless steel, and specialty alloys for industrial applications.",
+      category: "Metals"
+    },
+    {
+      id: 2,
+      name: "Aluminum Products",
+      image: "https://images.pexels.com/photos/2781421/pexels-photo-2781421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description: "Aluminum sheets, bars, and custom profiles for manufacturing, construction, and automotive industries.",
+      category: "Metals"
+    },
+    {
+      id: 3,
+      name: "Engineering Polymers",
+      image: "https://images.pexels.com/photos/3846969/pexels-photo-3846969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description: "High-performance engineering polymers including ABS, PC, POM, and PA for demanding applications.",
+      category: "Polymers"
+    },
+    {
+      id: 4,
+      name: "Commodity Plastics",
+      image: "https://images.pexels.com/photos/39348/musician-keyboard-father-family-39348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description: "Widely used polymers such as PE, PP, PS, and PVC for general manufacturing applications.",
+      category: "Polymers"
+    },
+    {
+      id: 5,
+      name: "Industrial Solvents",
+      image: "https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description: "Industrial-grade solvents for cleaning, degreasing, and manufacturing processes.",
+      category: "Chemicals"
+    },
+    {
+      id: 6,
+      name: "Processing Additives",
+      image: "https://images.pexels.com/photos/5427671/pexels-photo-5427671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description: "Chemical additives to enhance manufacturing processes and product properties.",
+      category: "Chemicals"
+    },
+    {
+      id: 7,
+      name: "Mineral Resources",
+      image: "https://images.pexels.com/photos/162534/architecture-building-workshop-interior-design-162534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description: "Essential minerals including silica, limestone, and clay for various industrial applications.",
+      category: "Raw Materials"
+    },
+    {
+      id: 8,
+      name: "Wood & Fiber Materials",
+      image: "https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      description: "Processed wood products and natural fibers for construction and manufacturing.",
+      category: "Raw Materials"
+    }
+  ];
+
+  const filteredProducts = products.filter(product => {
+    const matchesCategory = activeCategory === "All" || product.category === activeCategory;
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          product.description.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  return (
+    <div className="pt-24">
+      {/* Hero Section */}
+      <section className="bg-slate-800 py-16">
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="text-center max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+              Our Products
+            </h1>
+            <p className="text-xl text-gray-300 mb-8">
+              Explore our comprehensive range of high-quality commodities
+              for manufacturing excellence
+            </p>
+            <div className="relative max-w-xl mx-auto">
+              <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 md:px-8">
+          {/* Category Filter */}
+          <div className="mb-12 flex flex-wrap items-center gap-4 justify-center">
+            <Filter size={20} className="text-slate-500 mr-2" />
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  activeCategory === category
+                    ? 'bg-primary-500 text-white'
+                    : 'bg-gray-100 text-slate-600 hover:bg-gray-200'
+                }`}
+                onClick={() => setActiveCategory(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Products Grid */}
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProducts.map((product, index) => (
+                <ProductCard 
+                  key={product.id} 
+                  product={product} 
+                  index={index} 
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <p className="text-lg text-slate-600">No products found matching your criteria.</p>
+              <button 
+                className="mt-4 px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
+                onClick={() => {
+                  setActiveCategory("All");
+                  setSearchTerm("");
+                }}
+              >
+                Reset Filters
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Request Custom Solutions */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="bg-white p-8 rounded-xl shadow-md">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-3xl font-bold text-slate-800 mb-4">
+                  Need Custom Solutions?
+                </h2>
+                <p className="text-lg text-slate-600 mb-6">
+                  Can't find exactly what you're looking for? Our commodity specialists can 
+                  source custom materials to your exact specifications and quality requirements.
+                </p>
+                <a 
+                  href="/contact" 
+                  className="inline-block px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
+                >
+                  Request Custom Sourcing
+                </a>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <img 
+                  src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                  alt="Custom sourcing" 
+                  className="rounded-lg shadow-md w-full"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default ProductsPage;
