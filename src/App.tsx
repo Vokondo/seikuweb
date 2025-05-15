@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import AboutPage from './pages/AboutPage';
@@ -10,7 +10,7 @@ import Footer from './components/layout/Footer';
 
 function App() {
   return (
-    <Router basename="/seikuweb">
+    <Router>
       <div className="flex flex-col min-h-screen bg-white">
         <Header />
         <main className="flex-grow">
