@@ -10,7 +10,7 @@ import Footer from './components/layout/Footer';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/seikuweb">
       <div className="flex flex-col min-h-screen bg-white">
         <Header />
         <main className="flex-grow">
