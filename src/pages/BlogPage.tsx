@@ -77,18 +77,18 @@ const BlogPage: React.FC = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-slate-800 py-12 sm:py-16">
-        <div className="container mx-auto">
+      <section className="bg-slate-800 py-16">
+        <div className="container mx-auto px-4 md:px-8">
           <motion.div
             className="text-center max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-on-dark mb-4 sm:mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
               Industry Insights
             </h1>
-            <p className="text-mobile-base sm:text-lg text-gray-300 mb-6 sm:mb-8">
+            <p className="text-xl text-gray-300 mb-8">
               Expert analysis, market trends, and practical knowledge for 
               manufacturing commodities and supply chain management
             </p>
@@ -97,7 +97,7 @@ const BlogPage: React.FC = () => {
               <input
                 type="text"
                 placeholder="Search articles..."
-                className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 text-mobile-base"
+                className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500"
               />
             </div>
           </motion.div>
@@ -105,12 +105,12 @@ const BlogPage: React.FC = () => {
       </section>
 
       {/* Blog Content */}
-      <section className="py-12 sm:py-16">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+      <section className="py-16">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {blogPosts.map((post, index) => (
                   <motion.article
                     key={post.id}
@@ -120,22 +120,22 @@ const BlogPage: React.FC = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <div className="h-48 sm:h-56 overflow-hidden">
+                    <div className="h-48 overflow-hidden">
                       <img 
                         src={post.image} 
                         alt={post.title} 
                         className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                       />
                     </div>
-                    <div className="p-4 sm:p-6">
-                      <span className="inline-block px-3 py-1 text-mobile-sm font-semibold bg-primary-100 text-primary-700 rounded-full mb-3">
+                    <div className="p-6">
+                      <span className="inline-block px-3 py-1 text-xs font-semibold bg-primary-100 text-primary-700 rounded-full mb-3">
                         {post.category}
                       </span>
-                      <h3 className="mb-2 sm:mb-3 hover:text-primary-500 transition-colors">
+                      <h3 className="text-xl font-semibold text-slate-800 mb-3 hover:text-primary-500 transition-colors">
                         <a href="#">{post.title}</a>
                       </h3>
-                      <p className="text-mobile-base text-slate-600 mb-4">{post.excerpt}</p>
-                      <div className="flex items-center justify-between text-mobile-sm text-slate-500">
+                      <p className="text-slate-600 mb-4">{post.excerpt}</p>
+                      <div className="flex items-center justify-between text-sm text-slate-500">
                         <div className="flex items-center">
                           <User size={16} className="mr-1" />
                           <span>{post.author}</span>
@@ -147,7 +147,7 @@ const BlogPage: React.FC = () => {
                       </div>
                       <a 
                         href="#" 
-                        className="inline-flex items-center mt-4 font-medium text-primary-500 hover:text-primary-600 transition-colors text-mobile-base"
+                        className="inline-flex items-center font-medium text-primary-500 hover:text-primary-600 transition-colors mt-4"
                       >
                         Read more <ChevronRight size={16} className="ml-1" />
                       </a>
@@ -157,21 +157,21 @@ const BlogPage: React.FC = () => {
               </div>
 
               {/* Pagination */}
-              <div className="flex justify-center mt-8 sm:mt-12">
+              <div className="flex justify-center mt-12">
                 <div className="flex space-x-2">
-                  <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md border border-gray-300 text-slate-700 hover:bg-primary-50 hover:text-primary-500 transition-colors text-mobile-base">
+                  <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md border border-gray-300 text-slate-700 hover:bg-primary-50 hover:text-primary-500 transition-colors">
                     &laquo;
                   </a>
-                  <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md bg-primary-500 text-white text-mobile-base">
+                  <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-primary-500 text-white">
                     1
                   </a>
-                  <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md border border-gray-300 text-slate-700 hover:bg-primary-50 hover:text-primary-500 transition-colors text-mobile-base">
+                  <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md border border-gray-300 text-slate-700 hover:bg-primary-50 hover:text-primary-500 transition-colors">
                     2
                   </a>
-                  <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md border border-gray-300 text-slate-700 hover:bg-primary-50 hover:text-primary-500 transition-colors text-mobile-base">
+                  <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md border border-gray-300 text-slate-700 hover:bg-primary-50 hover:text-primary-500 transition-colors">
                     3
                   </a>
-                  <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-md border border-gray-300 text-slate-700 hover:bg-primary-50 hover:text-primary-500 transition-colors text-mobile-base">
+                  <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md border border-gray-300 text-slate-700 hover:bg-primary-50 hover:text-primary-500 transition-colors">
                     &raquo;
                   </a>
                 </div>
@@ -181,13 +181,13 @@ const BlogPage: React.FC = () => {
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <motion.div
-                className="bg-white rounded-xl shadow-md p-4 sm:p-6 mb-6 sm:mb-8"
+                className="bg-white rounded-xl shadow-md p-6 mb-8"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h3 className="text-on-light mb-4 pb-2 border-b border-gray-200">
+                <h3 className="text-xl font-semibold text-slate-800 mb-4 pb-2 border-b border-gray-200">
                   Categories
                 </h3>
                 <ul className="space-y-2">
@@ -195,10 +195,10 @@ const BlogPage: React.FC = () => {
                     <li key={index}>
                       <a 
                         href="#" 
-                        className="flex items-center justify-between py-2 text-slate-600 hover:text-primary-500 transition-colors text-mobile-base"
+                        className="flex items-center justify-between py-2 text-slate-600 hover:text-primary-500 transition-colors"
                       >
                         <span>{category}</span>
-                        <span className="bg-gray-100 text-slate-700 px-2 py-1 rounded-full text-mobile-sm">
+                        <span className="bg-gray-100 text-slate-700 px-2 py-1 rounded-full text-xs">
                           {Math.floor(Math.random() * 10) + 1}
                         </span>
                       </a>
@@ -208,16 +208,16 @@ const BlogPage: React.FC = () => {
               </motion.div>
 
               <motion.div
-                className="bg-white rounded-xl shadow-md p-4 sm:p-6 mb-6 sm:mb-8"
+                className="bg-white rounded-xl shadow-md p-6 mb-8"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <h3 className="text-on-light mb-4 pb-2 border-b border-gray-200">
+                <h3 className="text-xl font-semibold text-slate-800 mb-4 pb-2 border-b border-gray-200">
                   Subscribe to Our Newsletter
                 </h3>
-                <p className="text-mobile-base text-slate-600 mb-4">
+                <p className="text-slate-600 mb-4">
                   Stay up-to-date with the latest industry insights and market analysis.
                 </p>
                 <form>
@@ -225,13 +225,13 @@ const BlogPage: React.FC = () => {
                     <input
                       type="email"
                       placeholder="Your email address"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-mobile-base"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       required
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-primary-500 text-white py-3 rounded-lg hover:bg-primary-600 transition-colors text-mobile-base font-medium"
+                    className="w-full bg-primary-500 text-white py-3 rounded-lg hover:bg-primary-600 transition-colors"
                   >
                     Subscribe
                   </button>
@@ -239,13 +239,13 @@ const BlogPage: React.FC = () => {
               </motion.div>
 
               <motion.div
-                className="bg-white rounded-xl shadow-md p-4 sm:p-6"
+                className="bg-white rounded-xl shadow-md p-6"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <h3 className="text-on-light mb-4 pb-2 border-b border-gray-200">
+                <h3 className="text-xl font-semibold text-slate-800 mb-4 pb-2 border-b border-gray-200">
                   Latest Market Report
                 </h3>
                 <div className="mb-4">
@@ -254,15 +254,15 @@ const BlogPage: React.FC = () => {
                     alt="Market report" 
                     className="w-full h-40 object-cover rounded-lg mb-4"
                   />
-                  <h4 className="font-semibold text-slate-800 mb-2 text-mobile-base">
+                  <h4 className="font-semibold text-slate-800 mb-2">
                     Q2 2025 Commodity Market Outlook
                   </h4>
-                  <p className="text-mobile-sm text-slate-600 mb-3">
+                  <p className="text-slate-600 text-sm mb-3">
                     Comprehensive analysis of industrial commodity trends and price forecasts for the coming quarter.
                   </p>
                   <Link
                     to="#"
-                    className="inline-flex items-center text-primary-500 hover:text-primary-600 transition-colors text-mobile-base"
+                    className="inline-flex items-center text-primary-500 hover:text-primary-600 transition-colors"
                   >
                     Download report <ChevronRight size={16} className="ml-1" />
                   </Link>
