@@ -14,7 +14,7 @@ const BlogPage: React.FC = () => {
       id: 1,
       title: "Global Metal Market Trends for 2025",
       excerpt: "An analysis of upcoming trends in the industrial metals market, focusing on supply chain challenges and opportunities for manufacturers.",
-      image: "https://images.pexels.com/photos/2159235/pexels-photo-2159235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: blog3Img,
       author: "Michael Chen",
       date: "June 15, 2025",
       category: "Market Analysis"
@@ -23,7 +23,7 @@ const BlogPage: React.FC = () => {
       id: 2,
       title: "Sustainable Sourcing Practices in Commodities",
       excerpt: "How manufacturers can implement sustainable sourcing practices for raw materials while maintaining quality and controlling costs.",
-      image: "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: blog4Img,
       author: "Sarah Johnson",
       date: "May 28, 2025",
       category: "Sustainability"
