@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../assets/logo.png';
 
 const Header: React.FC = () => {
@@ -13,16 +13,17 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      const scrollThreshold = 20;
+      const shouldBeScrolled = window.scrollY > scrollThreshold;
+      
+      if (shouldBeScrolled !== isScrolled) {
+        setIsScrolled(shouldBeScrolled);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isScrolled]);
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -38,9 +39,9 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed w-full z-50 transition-all duration-200 ease-out ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-sm shadow-md py-3'
+          ? 'bg-white/90 backdrop-blur-md shadow-sm py-3'
           : 'bg-transparent py-5'
       }`}
     >
@@ -64,7 +65,7 @@ const Header: React.FC = () => {
                   location.pathname === link.path
                     ? 'text-primary-500'
                     : isScrolled
-                    ? 'text-slate-500'
+                    ? 'text-slate-700'
                     : 'text-slate-500'
                 }`}
               >
@@ -73,7 +74,7 @@ const Header: React.FC = () => {
             ))}
             <Link
               to="/contact"
-              className="px-6 py-2.5 bg-primary-500 text-white rounded-full shadow-md hover:bg-primary-600 transition-colors duration-300 font-medium"
+              className="px-6 py-2.5 bg-primary-500 text-white rounded-full shadow-sm hover:bg-primary-600 transition-colors duration-200 font-medium"
             >
               Get Quote
             </Link>
@@ -81,7 +82,7 @@ const Header: React.FC = () => {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-slate-500 focus:outline-none"
+            className="md:hidden text-slate-700 focus:outline-none"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -90,39 +91,74 @@ const Header: React.FC = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-white/95 backdrop-blur-sm mt-4 py-4 px-2 rounded-2xl shadow-lg"
-          >
-            <ul className="space-y-4">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className={`block px-4 py-2 font-medium rounded-xl transition-colors duration-200 hover:bg-primary-50 hover:text-primary-500 ${
-                      location.pathname === link.path
-                        ? 'text-primary-500 bg-primary-50'
-                        : 'text-slate-500'
-                    }`}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.nav
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2, ease: 'easeInOut' }}
+              className="md:hidden bg-white/95 backdrop-blur-md mt-4 py-4 px-2 rounded-2xl shadow-lg overflow-hidden"
+            >
+              <motion.ul
+                initial="closed"
+                animate="open"
+                exit="closed"
+                variants={{
+                  open: {
+                    transition: {
+                      staggerChildren: 0.05,
+                    },
+                  },
+                  closed: {
+                    transition: {
+                      staggerChildren: 0.05,
+                      staggerDirection: -1,
+                    },
+                  },
+                }}
+                className="space-y-1"
+              >
+                {navLinks.map((link) => (
+                  <motion.li
+                    key={link.name}
+                    variants={{
+                      open: { opacity: 1, y: 0 },
+                      closed: { opacity: 0, y: -10 },
+                    }}
+                    transition={{ duration: 0.2 }}
                   >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-              <li className="pt-2 border-t border-gray-100">
-                <Link
-                  to="/contact"
-                  className="block px-4 py-2 bg-primary-500 text-white text-center rounded-full hover:bg-primary-600 transition-colors duration-300 font-medium"
+                    <Link
+                      to={link.path}
+                      className={`block px-4 py-2 font-medium rounded-xl transition-colors duration-200 hover:bg-primary-50 hover:text-primary-500 ${
+                        location.pathname === link.path
+                          ? 'text-primary-500 bg-primary-50'
+                          : 'text-slate-700'
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.li>
+                ))}
+                <motion.li
+                  variants={{
+                    open: { opacity: 1, y: 0 },
+                    closed: { opacity: 0, y: -10 },
+                  }}
+                  transition={{ duration: 0.2 }}
+                  className="pt-2 border-t border-gray-100"
                 >
-                  Get Quote
-                </Link>
-              </li>
-            </ul>
-          </motion.nav>
-        )}
+                  <Link
+                    to="/contact"
+                    className="block px-4 py-2 bg-primary-500 text-white text-center rounded-xl hover:bg-primary-600 transition-colors duration-200 font-medium"
+                  >
+                    Get Quote
+                  </Link>
+                </motion.li>
+              </motion.ul>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

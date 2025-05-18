@@ -7,10 +7,12 @@ import ContactPage from './pages/ContactPage';
 import BlogPage from './pages/BlogPage';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-white">
         <Header />
         <main className="flex-grow">

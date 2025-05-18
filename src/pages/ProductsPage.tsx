@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Filter } from 'lucide-react';
 import ProductCard from '../components/ui/ProductCard';
+import aluminiumImg from '../assets/aluminium.jpg';
+import steelalloyImg from '../assets/steelalloy.jpg';
 
 const ProductsPage: React.FC = () => {
   const categories = ["All", "Metals", "Polymers", "Chemicals", "Raw Materials"];
@@ -12,14 +14,14 @@ const ProductsPage: React.FC = () => {
     {
       id: 1,
       name: "Steel Alloys",
-      image: "https://images.pexels.com/photos/2088233/pexels-photo-2088233.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: steelalloyImg,
       description: "High-grade steel alloys including carbon steel, stainless steel, and specialty alloys for industrial applications.",
       category: "Metals"
     },
     {
       id: 2,
       name: "Aluminum Products",
-      image: "https://images.pexels.com/photos/2781421/pexels-photo-2781421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: aluminiumImg,
       description: "Aluminum sheets, bars, and custom profiles for manufacturing, construction, and automotive industries.",
       category: "Metals"
     },
