@@ -80,7 +80,7 @@ const ProductsPage: React.FC = () => {
   });
 
   return (
-    <div className="pt-24">
+    <div className="pt-16">
       {/* Hero Section */}
       <section className="bg-slate-800 py-16">
         <div className="container mx-auto px-4 md:px-8">
