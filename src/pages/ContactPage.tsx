@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import callImg from '../assets/call.jpg';
 
 const ContactPage: React.FC = () => {
   return (
@@ -183,7 +184,7 @@ const ContactPage: React.FC = () => {
               {/* Map */}
               <div className="mt-10 rounded-lg overflow-hidden shadow-md">
                 <img 
-                  src="https://images.pexels.com/photos/4396364/pexels-photo-4396364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                  src={callImg}
                   alt="Location map" 
                   className="w-full h-72 object-cover"
                 />

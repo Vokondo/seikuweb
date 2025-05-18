@@ -2,6 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, User, ChevronRight, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import blog1Img from '../assets/blog1.jpg';
+import blog2Img from '../assets/blog2.jpg';
+import blog3Img from '../assets/blog3.jpeg';
+import blog4Img from '../assets/blog4.jpeg';
+
 
 const BlogPage: React.FC = () => {
   const blogPosts = [
@@ -9,7 +14,7 @@ const BlogPage: React.FC = () => {
       id: 1,
       title: "Global Metal Market Trends for 2025",
       excerpt: "An analysis of upcoming trends in the industrial metals market, focusing on supply chain challenges and opportunities for manufacturers.",
-      image: "https://images.pexels.com/photos/159243/machinery-gear-gears-cogs-159243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: blog3Img,
       author: "Michael Chen",
       date: "June 15, 2025",
       category: "Market Analysis"
@@ -18,7 +23,7 @@ const BlogPage: React.FC = () => {
       id: 2,
       title: "Sustainable Sourcing Practices in Commodities",
       excerpt: "How manufacturers can implement sustainable sourcing practices for raw materials while maintaining quality and controlling costs.",
-      image: "https://images.pexels.com/photos/414667/pexels-photo-414667.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: blog4Img,
       author: "Sarah Johnson",
       date: "May 28, 2025",
       category: "Sustainability"
@@ -27,7 +32,7 @@ const BlogPage: React.FC = () => {
       id: 3,
       title: "Navigating Supply Chain Disruptions",
       excerpt: "Strategic approaches to mitigate risk and ensure commodity supply continuity during global market disruptions.",
-      image: "https://images.pexels.com/photos/6169667/pexels-photo-6169667.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: blog1Img,
       author: "David Williams",
       date: "May 10, 2025",
       category: "Supply Chain"
@@ -45,7 +50,7 @@ const BlogPage: React.FC = () => {
       id: 5,
       title: "Raw Material Price Forecasting Models",
       excerpt: "Advanced analytical approaches to forecasting commodity prices and optimizing procurement strategies for manufacturers.",
-      image: "https://images.pexels.com/photos/186464/pexels-photo-186464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: blog2Img,
       author: "Robert Thompson",
       date: "April 5, 2025",
       category: "Market Analysis"
