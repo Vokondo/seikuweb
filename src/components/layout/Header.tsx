@@ -41,8 +41,8 @@ const Header: React.FC = () => {
     <header
       className={`fixed w-full z-50 transition-all duration-200 ease-out ${
         isScrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-sm py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-white shadow-sm py-3'
+          : 'bg-white py-5'
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
                     ? 'text-primary-500'
                     : isScrolled
                     ? 'text-slate-700'
-                    : 'text-slate-500'
+                    : 'text-slate-700'
                 }`}
               >
                 {link.name}
@@ -107,7 +107,7 @@ const Header: React.FC = () => {
                 variants={{
                   open: {
                     transition: {
-                      staggerChildren: 0.05,
+                      staggerChildren: 0.07,
                     },
                   },
                   closed: {
@@ -126,11 +126,11 @@ const Header: React.FC = () => {
                       open: { opacity: 1, y: 0 },
                       closed: { opacity: 0, y: -10 },
                     }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.3 }}
                   >
                     <Link
                       to={link.path}
-                      className={`block px-4 py-2 font-medium rounded-xl transition-colors duration-200 hover:bg-primary-50 hover:text-primary-500 ${
+                      className={`block px-4 py-2 font-medium rounded-xl transition-all duration-300 hover:bg-primary-50 hover:text-primary-500 ${
                         location.pathname === link.path
                           ? 'text-primary-500 bg-primary-50'
                           : 'text-slate-700'
@@ -145,12 +145,12 @@ const Header: React.FC = () => {
                     open: { opacity: 1, y: 0 },
                     closed: { opacity: 0, y: -10 },
                   }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.3 }}
                   className="pt-2 border-t border-gray-100"
                 >
                   <Link
                     to="/contact"
-                    className="block px-4 py-2 bg-primary-500 text-white text-center rounded-xl hover:bg-primary-600 transition-colors duration-200 font-medium"
+                    className="block px-4 py-2 bg-primary-500 text-white text-center rounded-xl hover:bg-primary-600 transition-all duration-300 font-medium hover:shadow-md"
                   >
                     Get Quote
                   </Link>
