@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Globe, TrendingUp, Shield, Truck, Users, Award } from 'lucide-react';
 import CTASection from '../components/sections/CTASection';
+import meetingImg from '../assets/meeting.jpg';
+import ceoImg from '../assets/ceo.png';
 
 const AboutPage: React.FC = () => {
   return (
@@ -69,12 +71,12 @@ const AboutPage: React.FC = () => {
               </p>
               <div className="flex items-center mt-8">
                 <img 
-                  src="https://images.pexels.com/photos/3760604/pexels-photo-3760604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                  src={ceoImg}
                   alt="CEO" 
                   className="w-16 h-16 rounded-full object-cover mr-4"
                 />
                 <div>
-                  <p className="font-semibold text-slate-800">David Williams</p>
+                  <p className="font-semibold text-slate-800">Opoku Aseidu</p>
                   <p className="text-slate-600">Founder & CEO</p>
                 </div>
               </div>
@@ -87,7 +89,7 @@ const AboutPage: React.FC = () => {
               className="order-1 lg:order-2"
             >
               <img 
-                src="https://images.pexels.com/photos/6169657/pexels-photo-6169657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                src={meetingImg}
                 alt="Seiku team meeting" 
                 className="rounded-lg shadow-lg w-full"
               />

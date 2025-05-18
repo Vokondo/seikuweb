@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Filter } from 'lucide-react';
 import ProductCard from '../components/ui/ProductCard';
@@ -9,6 +9,10 @@ const ProductsPage: React.FC = () => {
   const categories = ["All", "Metals", "Polymers", "Chemicals", "Raw Materials"];
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const products = [
     {
@@ -27,10 +31,9 @@ const ProductsPage: React.FC = () => {
     },
     {
       id: 3,
-      name: "Engineering Polymers",
+      name: "Petroleum Products",
       image: "https://images.pexels.com/photos/3846969/pexels-photo-3846969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      description: "High-performance engineering polymers including ABS, PC, POM, and PA for demanding applications.",
-      category: "Polymers"
+      description: "Naphtha, fuel oils, lubricants, and petrochemical feedstocks for chemical manufacturing, energy production, etc"
     },
     {
       id: 4,
