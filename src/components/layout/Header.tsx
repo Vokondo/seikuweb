@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../assets/logo.png';
@@ -8,6 +8,7 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -52,6 +53,24 @@ const Header: React.FC = () => {
     { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' },
   ];
+
+  // Custom link component for mobile navigation
+  const MobileNavLink = ({ to, children, className }: { to: string; children: React.ReactNode; className: string }) => {
+    const handleClick = (e: React.MouseEvent) => {
+      e.preventDefault();
+      setIsMenuOpen(false);
+      // Wait for the menu fade out animation to complete before navigating
+      setTimeout(() => {
+        navigate(to);
+      }, 300); // Match this with the exit animation duration
+    };
+
+    return (
+      <a href={to} onClick={handleClick} className={className}>
+        {children}
+      </a>
+    );
+  };
 
   return (
     <header
@@ -158,7 +177,7 @@ const Header: React.FC = () => {
                     y: -10, 
                     scale: 0.95,
                     transition: {
-                      duration: 0.2,
+                      duration: 0.3,
                       ease: [0.4, 0, 1, 1]
                     }
                   }}
@@ -211,7 +230,7 @@ const Header: React.FC = () => {
                           },
                         }}
                       >
-                        <Link
+                        <MobileNavLink
                           to={link.path}
                           className={`block px-4 py-2 font-medium rounded-xl transition-all duration-200 hover:bg-primary-50 hover:text-primary-500 ${
                             location.pathname === link.path
@@ -220,7 +239,7 @@ const Header: React.FC = () => {
                           }`}
                         >
                           {link.name}
-                        </Link>
+                        </MobileNavLink>
                       </motion.li>
                     ))}
                     <motion.li
@@ -244,12 +263,12 @@ const Header: React.FC = () => {
                       }}
                       className="pt-2 border-t border-gray-100"
                     >
-                      <Link
+                      <MobileNavLink
                         to="/contact"
                         className="block px-4 py-2 bg-primary-500 text-white text-center rounded-xl hover:bg-primary-600 transition-all duration-200 font-medium"
                       >
                         Get Quote
-                      </Link>
+                      </MobileNavLink>
                     </motion.li>
                   </motion.ul>
                 </motion.nav>
