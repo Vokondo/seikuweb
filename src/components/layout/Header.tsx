@@ -42,16 +42,16 @@ const Header: React.FC = () => {
       className={`fixed w-full z-50 transition-all duration-200 ease-out ${
         isScrolled
           ? 'bg-white shadow-sm py-3'
-          : 'bg-white py-5'
+          : 'bg-white py-3'
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-10">
           <Link to="/" className="flex items-center">
             <img 
               src={logo}
               alt="Seiku" 
-              className="h-8 md:h-10 w-auto"
+              className="h-8 w-auto"
             />
           </Link>
 
@@ -64,8 +64,6 @@ const Header: React.FC = () => {
                 className={`font-medium transition-colors duration-200 hover:text-primary-500 ${
                   location.pathname === link.path
                     ? 'text-primary-500'
-                    : isScrolled
-                    ? 'text-slate-700'
                     : 'text-slate-700'
                 }`}
               >
@@ -94,11 +92,11 @@ const Header: React.FC = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.nav
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className="md:hidden bg-white/95 backdrop-blur-md mt-4 py-4 px-2 rounded-2xl shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden bg-white mt-4 py-4 px-2 rounded-2xl shadow-lg"
             >
               <motion.ul
                 initial="closed"
@@ -107,7 +105,7 @@ const Header: React.FC = () => {
                 variants={{
                   open: {
                     transition: {
-                      staggerChildren: 0.07,
+                      staggerChildren: 0.05,
                     },
                   },
                   closed: {
@@ -124,13 +122,13 @@ const Header: React.FC = () => {
                     key={link.name}
                     variants={{
                       open: { opacity: 1, y: 0 },
-                      closed: { opacity: 0, y: -10 },
+                      closed: { opacity: 0, y: -5 },
                     }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.15 }}
                   >
                     <Link
                       to={link.path}
-                      className={`block px-4 py-2 font-medium rounded-xl transition-all duration-300 hover:bg-primary-50 hover:text-primary-500 ${
+                      className={`block px-4 py-2 font-medium rounded-xl transition-colors duration-200 hover:bg-primary-50 hover:text-primary-500 ${
                         location.pathname === link.path
                           ? 'text-primary-500 bg-primary-50'
                           : 'text-slate-700'
@@ -143,14 +141,14 @@ const Header: React.FC = () => {
                 <motion.li
                   variants={{
                     open: { opacity: 1, y: 0 },
-                    closed: { opacity: 0, y: -10 },
+                    closed: { opacity: 0, y: -5 },
                   }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.15 }}
                   className="pt-2 border-t border-gray-100"
                 >
                   <Link
                     to="/contact"
-                    className="block px-4 py-2 bg-primary-500 text-white text-center rounded-xl hover:bg-primary-600 transition-all duration-300 font-medium hover:shadow-md"
+                    className="block px-4 py-2 bg-primary-500 text-white text-center rounded-xl hover:bg-primary-600 transition-colors duration-200 font-medium"
                   >
                     Get Quote
                   </Link>
