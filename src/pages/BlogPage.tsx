@@ -2,11 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, User, ChevronRight, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import blog1Img from '../assets/blog1.jpg';
-import blog2Img from '../assets/blog2.jpg';
-import blog3Img from '../assets/blog3.jpg';
-import blog4Img from '../assets/blog4.jpg';
 
+// Import images using dynamic imports
+import blog1Img from '../assets/blog1.jpg?url';
+import blog2Img from '../assets/blog2.jpg?url';
+import blog3Img from '../assets/blog3.jpg?url';
+import blog4Img from '../assets/blog4.jpg?url';
 
 const BlogPage: React.FC = () => {
   const blogPosts = [
