@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import AboutPage from './pages/AboutPage';
@@ -31,6 +31,11 @@ const AppContent = () => {
       <Header />
       <main className="flex-grow">
         <Routes>
+          <Route path="/seikuweb/" element={<HomePage />} />
+          <Route path="/seikuweb/products" element={<ProductsPage />} />
+          <Route path="/seikuweb/about" element={<AboutPage />} />
+          <Route path="/seikuweb/contact" element={<ContactPage />} />
+          <Route path="/seikuweb/blog" element={<BlogPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/about" element={<AboutPage />} />
