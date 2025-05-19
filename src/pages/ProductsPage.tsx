@@ -3,7 +3,14 @@ import { motion } from 'framer-motion';
 import { Search, Filter } from 'lucide-react';
 import ProductCard from '../components/ui/ProductCard';
 import aluminiumImg from '../assets/aluminium.jpg';
-import steelalloyImg from '../assets/steelalloy.jpg';
+import chemindImg from '../assets/chemind.jpg';
+import petroImg from '../assets/petro.jpg';
+import mineImg from '../assets/mine.png';
+import plasImg from '../assets/plas.jpg';
+import scrapsImg from '../assets/scraps.jpg';
+import woodImg from '../assets/wood.jpg';
+import addImg from '../assets/add.jpg';
+import metalImg from '../assets/metal.jpg';
 
 const ProductsPage: React.FC = () => {
   const categories = ["All", "Metals", "Polymers", "Chemicals", "Raw Materials"];
@@ -17,56 +24,56 @@ const ProductsPage: React.FC = () => {
   const products = [
     {
       id: 1,
-      name: "Steel Alloys",
-      image: steelalloyImg,
-      description: "High-grade steel alloys including carbon steel, stainless steel, and specialty alloys for industrial applications.",
-      category: "Metals"
+      name: "Industrial Solvents",
+      image: chemindImg,
+      description: "Industrial-grade solvents for pharmaceutical, cleaning, degreasing, and manufacturing processes",
+      category: "Chemicals"
     },
     {
       id: 2,
-      name: "Aluminum Products",
-      image: aluminiumImg,
-      description: "Aluminum sheets, bars, and custom profiles for manufacturing, construction, and automotive industries.",
+      name: "Mineral Resources",
+      image: mineImg,
+      description: "Essential minerals including silica, limestone, and clay for various industrial applications.",
       category: "Metals"
     },
     {
       id: 3,
       name: "Petroleum Products",
-      image: "https://images.pexels.com/photos/3846969/pexels-photo-3846969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: petroImg,
       description: "Naphtha, fuel oils, lubricants, and petrochemical feedstocks for chemical manufacturing, energy production, etc"
     },
     {
       id: 4,
       name: "Commodity Plastics",
-      image: "https://images.pexels.com/photos/39348/musician-keyboard-father-family-39348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: plasImg,
       description: "Widely used polymers such as PE, PP, PS, and PVC for general manufacturing applications.",
       category: "Polymers"
     },
     {
       id: 5,
-      name: "Industrial Solvents",
-      image: "https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      description: "Industrial-grade solvents for cleaning, degreasing, and manufacturing processes.",
-      category: "Chemicals"
+      name: "Scrap Metals",
+      image: scrapsImg,
+      description: "High-quality scrap metals for recycling, smelting, and industrial manufacturing applications.",
+      category: "Metals"
     },
     {
       id: 6,
       name: "Processing Additives",
-      image: "https://images.pexels.com/photos/5427671/pexels-photo-5427671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: addImg,
       description: "Chemical additives to enhance manufacturing processes and product properties.",
       category: "Chemicals"
     },
     {
       id: 7,
-      name: "Mineral Resources",
-      image: "https://images.pexels.com/photos/162534/architecture-building-workshop-interior-design-162534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      description: "Essential minerals including silica, limestone, and clay for various industrial applications.",
-      category: "Raw Materials"
+      name: "Metals",
+      image: metalImg,
+      description: "Top-tier metals and custom alloys engineered for precision machining, structural fabrication, and demanding industrial uses.",
+      category: "Metals"
     },
     {
       id: 8,
       name: "Wood & Fiber Materials",
-      image: "https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: woodImg,
       description: "Processed wood products and natural fibers for construction and manufacturing.",
       category: "Raw Materials"
     }
