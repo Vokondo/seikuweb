@@ -89,7 +89,7 @@ const Header: React.FC = () => {
       >
         <div className="container mx-auto px-4 md:px-8">
           <div className="flex items-center justify-between h-10">
-            <Link to="/" className="flex items-center">
+            <Link to="/seikuweb/" className="flex items-center">
               <img 
                 src={logo}
                 alt="Seiku" 
@@ -113,7 +113,7 @@ const Header: React.FC = () => {
                 </Link>
               ))}
               <Link
-                to="/contact"
+                to="/seikuweb/contact"
                 className="px-6 py-2.5 bg-primary-500 text-white rounded-full shadow-sm hover:bg-primary-600 transition-colors duration-200 font-medium"
               >
                 Get Quote
@@ -264,7 +264,7 @@ const Header: React.FC = () => {
                       className="pt-2 border-t border-gray-100"
                     >
                       <MobileNavLink
-                        to="/contact"
+                        to="/seikuweb/contact"
                         className="block px-4 py-2 bg-primary-500 text-white text-center rounded-xl hover:bg-primary-600 transition-all duration-200 font-medium"
                       >
                         Get Quote
