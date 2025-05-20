@@ -49,22 +49,22 @@ const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/products" className="text-gray-300 hover:text-accent-400 transition-colors">
+                <Link to="/seikuweb/products" className="text-gray-300 hover:text-accent-400 transition-colors">
                   Products
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-accent-400 transition-colors">
+                <Link to="/seikuweb/about" className="text-gray-300 hover:text-accent-400 transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-300 hover:text-accent-400 transition-colors">
+                <Link to="/seikuweb/blog" className="text-gray-300 hover:text-accent-400 transition-colors">
                   Industry Insights
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-accent-400 transition-colors">
+                <Link to="/seikuweb/contact" className="text-gray-300 hover:text-accent-400 transition-colors">
                   Contact
                 </Link>
               </li>

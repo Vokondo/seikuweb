@@ -47,11 +47,11 @@ const Header: React.FC = () => {
   }, [location]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Products', path: '/products' },
-    { name: 'About', path: '/about' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Home', path: '/seikuweb/' },
+    { name: 'Products', path: '/seikuweb/products' },
+    { name: 'About', path: '/seikuweb/about' },
+    { name: 'Blog', path: '/seikuweb/blog' },
+    { name: 'Contact', path: '/seikuweb/contact' },
   ];
 
   // Custom link component for mobile navigation
