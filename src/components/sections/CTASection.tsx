@@ -30,17 +30,17 @@ const CTASection: React.FC = () => {
                     Request a Quote <ArrowRight size={18} className="ml-2" />
                   </Link>
                   <a 
-                    href="tel:+12125551234" 
+                    href="tel:+233597046360" 
                     className="inline-flex items-center justify-center bg-transparent border-2 border-white/20 text-white hover:bg-white/5 px-8 py-3 rounded-lg font-medium transition-colors duration-300"
                   >
-                    <Phone size={18} className="mr-2" /> (212) 555-1234
+                    <Phone size={18} className="mr-2" /> +233 597 046 360
                   </a>
                 </div>
                 <div className="text-gray-400">
                   <div className="flex items-center mb-2">
                     <Mail size={18} className="mr-2 text-accent-400" />
-                    <a href="mailto:info@seiku.com" className="hover:text-accent-400 transition-colors">
-                      info@seiku.com
+                    <a href="mailto:info@seikugroup.com" className="hover:text-accent-400 transition-colors">
+                      info@seikugroup.com
                     </a>
                   </div>
                   <p>Our commodity experts will respond within 24 hours</p>

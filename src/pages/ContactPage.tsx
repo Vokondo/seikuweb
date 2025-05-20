@@ -152,7 +152,7 @@ const ContactPage: React.FC = () => {
                   <div>
                     <h3 className="font-semibold text-lg text-slate-800 mb-1">Phone</h3>
                     <p className="text-slate-600">
-                      <a href="tel:+12125551234" className="hover:text-primary-500 transition-colors">+1 (212) 555-1234</a> (Main)<br />
+                      <a href="tel:+233597046360" className="hover:text-primary-500 transition-colors">+233 597 046 360</a> (Main)<br />
                       <a href="tel:+12125555678" className="hover:text-primary-500 transition-colors">+1 (212) 555-5678</a> (Support)
                     </p>
                   </div>
@@ -162,9 +162,9 @@ const ContactPage: React.FC = () => {
                   <div>
                     <h3 className="font-semibold text-lg text-slate-800 mb-1">Email</h3>
                     <p className="text-slate-600">
-                      <a href="mailto:info@seiku.com" className="hover:text-primary-500 transition-colors">info@seiku.com</a> (General Inquiries)<br />
-                      <a href="mailto:sales@seiku.com" className="hover:text-primary-500 transition-colors">sales@seiku.com</a> (Sales)<br />
-                      <a href="mailto:support@seiku.com" className="hover:text-primary-500 transition-colors">support@seiku.com</a> (Support)
+                      <a href="mailto:info@seikugroup.com" className="hover:text-primary-500 transition-colors">info@seikugroup.com</a> (General Inquiries)<br />
+                      <a href="mailto:sales@seikugroup.com" className="hover:text-primary-500 transition-colors">sales@seikugroup.com</a> (Sales)<br />
+                      <a href="mailto:support@seikugroup.com" className="hover:text-primary-500 transition-colors">support@seikugroup.com</a> (Support)
                     </p>
                   </div>
                 </div>
