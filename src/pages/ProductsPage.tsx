@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Search, Filter } from 'lucide-react';
+import { Search, Filter, ArrowRight } from 'lucide-react';
 import ProductCard from '../components/ui/ProductCard';
 import aluminiumImg from '../assets/aluminium.jpg';
 import chemindImg from '../assets/chemind.jpg';
@@ -186,10 +186,10 @@ const ProductsPage: React.FC = () => {
                   source custom materials to your exact specifications and quality requirements.
                 </p>
                 <a 
-                  href="/contact" 
-                  className="inline-block px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
+                  href="/seikuweb/contact" 
+                  className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium"
                 >
-                  Request Custom Sourcing
+                  Contact Us <ArrowRight size={16} className="ml-1" />
                 </a>
               </motion.div>
               <motion.div

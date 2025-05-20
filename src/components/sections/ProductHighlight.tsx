@@ -60,7 +60,7 @@ const ProductHighlight: React.FC = () => {
             </p>
           </div>
           <Link 
-            to="/products"
+            to="/seikuweb/products"
             className="mt-4 md:mt-0 inline-flex items-center font-medium text-primary-500 hover:text-primary-600 transition-colors"
           >
             View all products <ArrowRight size={18} className="ml-1" />

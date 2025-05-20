@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, BarChart3, TrendingUp, Scale, Truck } from 'lucide-react';
+import { ChevronRight, BarChart3, TrendingUp, Scale, Truck, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/sections/Hero';
 import ProductHighlight from '../components/sections/ProductHighlight';
@@ -151,10 +151,10 @@ const HomePage: React.FC = () => {
                   <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2 sm:mb-3 tracking-tight">{industry.title}</h3>
                   <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed">{industry.description}</p>
                   <Link 
-                    to="/products" 
-                    className="inline-flex items-center text-sm sm:text-base font-medium text-primary-500 hover:text-primary-600 transition-colors"
+                    to="/seikuweb/products" 
+                    className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium"
                   >
-                    Learn more <ChevronRight size={16} className="ml-1" />
+                    View All Products <ArrowRight size={16} className="ml-1" />
                   </Link>
                 </div>
               </motion.div>

@@ -32,16 +32,16 @@ const Hero: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
-                to="/products" 
-                className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-300 text-center sm:text-left"
+                to="/seikuweb/products" 
+                className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-300 inline-flex items-center justify-center"
               >
-                Explore Products
+                Explore Products <ArrowRight size={18} className="ml-2" />
               </Link>
               <Link 
-                to="/contact" 
-                className="bg-transparent border-2 border-accent-400 text-accent-400 hover:bg-accent-400/10 px-8 py-3 rounded-lg font-medium transition-colors duration-300 flex items-center justify-center sm:justify-start"
+                to="/seikuweb/contact" 
+                className="bg-transparent border-2 border-white/20 text-white hover:bg-white/5 px-8 py-3 rounded-lg font-medium transition-colors duration-300 inline-flex items-center justify-center"
               >
-                Get a Quote <ArrowRight size={18} className="ml-2" />
+                Contact Us
               </Link>
             </div>
           </motion.div>

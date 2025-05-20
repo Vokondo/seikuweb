@@ -24,7 +24,7 @@ const CTASection: React.FC = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Link 
-                    to="/contact" 
+                    to="/seikuweb/contact" 
                     className="bg-accent-500 hover:bg-accent-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-300 inline-flex items-center justify-center"
                   >
                     Request a Quote <ArrowRight size={18} className="ml-2" />
