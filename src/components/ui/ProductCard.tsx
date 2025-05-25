@@ -19,7 +19,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   return (
     <motion.div
-      className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+      className="bg-black rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -34,8 +34,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
         />
       </div>
       <div className="p-4 sm:p-6">
-        <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2 sm:mb-3">{product.name}</h3>
-        <p className="text-sm sm:text-base text-slate-600 mb-3 sm:mb-4">{product.description}</p>
+        <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">{product.name}</h3>
+        <p className="text-sm sm:text-base text-white mb-3 sm:mb-4">{product.description}</p>
         <Link 
           to={`/products`} 
           className="inline-flex items-center text-sm sm:text-base font-medium text-primary-500 hover:text-primary-600 transition-colors"
