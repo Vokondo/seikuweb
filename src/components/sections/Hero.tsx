@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import styles from './Hero.module.css';
 
 const phrases = [
-  "Manufacturing Excellence.  ",
-  "Mankind's Development.  ",
-  "Customer Satisfaction.  ",
-  "Superior Products.  "
+  "Manufacturing Excellence  ",
+  "Mankind's Development  ",
+  "Customer Satisfaction  ",
+  "Superior Products  "
 ];
 
 const Hero: React.FC = () => {
@@ -28,17 +28,9 @@ const Hero: React.FC = () => {
         setIsTyping(false);
         clearInterval(typeInterval);
       }
-    }, 150);
+    }, 100);
 
-    // Add a 5-second delay after typing is complete
-    const timeout = setTimeout(() => {
-      setIsTyping(false);
-    }, 5000);
-
-    return () => {
-      clearInterval(typeInterval);
-      clearTimeout(timeout);
-    };
+    return () => clearInterval(typeInterval);
   }, [currentPhrase, typedLength, isInView]);
 
   React.useEffect(() => {
@@ -51,7 +43,7 @@ const Hero: React.FC = () => {
         setIsTyping(false);
         clearInterval(typeInterval);
       }
-    }, 500);
+    }, 100);
 
     return () => clearInterval(typeInterval);
   }, [currentPhrase, typedLength, isInView]);
@@ -71,17 +63,6 @@ const Hero: React.FC = () => {
       return () => clearInterval(eraseInterval);
     }
   }, [isInView, isTyping, typedLength]);
-
-  React.useEffect(() => {
-    if (isInView && typedLength === phrases[currentPhrase].length) {
-      // Add a delay before erasing
-      const timeout = setTimeout(() => {
-        setIsTyping(false);
-      }, 2000);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [isInView, typedLength, currentPhrase]);
 
   return (
     <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden">
