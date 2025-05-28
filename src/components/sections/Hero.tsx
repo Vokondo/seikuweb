@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
         setIsTyping(false);
         clearInterval(typeInterval);
       }
-    }, 100);
+    }, 190);
 
     return () => clearInterval(typeInterval);
   }, [currentPhrase, typedLength, isInView]);
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
         setIsTyping(false);
         clearInterval(typeInterval);
       }
-    }, 100);
+    }, 190);
 
     return () => clearInterval(typeInterval);
   }, [currentPhrase, typedLength, isInView]);
