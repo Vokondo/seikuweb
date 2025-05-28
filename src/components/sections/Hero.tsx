@@ -1,9 +1,88 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import styles from './Hero.module.css';
+
+const phrases = [
+  "Manufacturing Excellence.  ",
+  "Mankind's Development.  ",
+  "Customer Satisfaction.  ",
+  "Superior Products.  "
+];
 
 const Hero: React.FC = () => {
+  const [currentPhrase, setCurrentPhrase] = React.useState(0);
+  const [isTyping, setIsTyping] = React.useState(true);
+  const [typedLength, setTypedLength] = React.useState(0);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true });
+
+  React.useEffect(() => {
+    if (!isInView) return;
+
+    const typeInterval = setInterval(() => {
+      if (typedLength < phrases[currentPhrase].length) {
+        setTypedLength(typedLength + 1);
+      } else {
+        setIsTyping(false);
+        clearInterval(typeInterval);
+      }
+    }, 150);
+
+    // Add a 5-second delay after typing is complete
+    const timeout = setTimeout(() => {
+      setIsTyping(false);
+    }, 5000);
+
+    return () => {
+      clearInterval(typeInterval);
+      clearTimeout(timeout);
+    };
+  }, [currentPhrase, typedLength, isInView]);
+
+  React.useEffect(() => {
+    if (!isInView || !isTyping) return;
+
+    const typeInterval = setInterval(() => {
+      if (typedLength < phrases[currentPhrase].length) {
+        setTypedLength(typedLength + 1);
+      } else {
+        setIsTyping(false);
+        clearInterval(typeInterval);
+      }
+    }, 500);
+
+    return () => clearInterval(typeInterval);
+  }, [currentPhrase, typedLength, isInView]);
+
+  React.useEffect(() => {
+    if (isInView && !isTyping) {
+      const eraseInterval = setInterval(() => {
+        if (typedLength > 0) {
+          setTypedLength(typedLength - 1);
+        } else {
+          setIsTyping(true);
+          setCurrentPhrase((prev) => (prev + 1) % phrases.length);
+          clearInterval(eraseInterval);
+        }
+      }, 50);
+
+      return () => clearInterval(eraseInterval);
+    }
+  }, [isInView, isTyping, typedLength]);
+
+  React.useEffect(() => {
+    if (isInView && typedLength === phrases[currentPhrase].length) {
+      // Add a delay before erasing
+      const timeout = setTimeout(() => {
+        setIsTyping(false);
+      }, 2000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isInView, typedLength, currentPhrase]);
+
   return (
     <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden">
       {/* Background image with overlay */}
@@ -24,7 +103,17 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Premium Commodities for <span className="text-accent-400">Manufacturing Excellence</span>
+              Premium Commodities for <div ref={containerRef}>
+                <motion.span
+                  className="text-accent-400"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: isInView ? 1 : 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {phrases[currentPhrase].slice(0, typedLength)}
+                  {typedLength < phrases[currentPhrase].length && <span className={styles.animateBlink}>|</span>}
+                </motion.span>
+              </div>
             </h1>
             <p className="text-xl text-gray-300 mb-8 max-w-lg">
               Sourcing high-quality raw materials and commodities to power your manufacturing 
