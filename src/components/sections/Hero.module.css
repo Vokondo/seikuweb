@@ -1,14 +1,8 @@
-.animateBlink {
-  animation: blink 1.2s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  margin-left: 2px;
-  display: inline-block;
-  width: 3px;
-  height: 1.2em;
-  background-color: currentColor;
-  vertical-align: text-bottom;
+.animate-blink {
+  animation: blink 1s infinite;
 }
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  40%, 60% { opacity: 0; }
+  50% { opacity: 0; }
 }
