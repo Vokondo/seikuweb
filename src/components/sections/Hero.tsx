@@ -83,7 +83,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight mb-6">
               Premium Commodities for <div ref={containerRef}>
                 <motion.span
                   className="text-accent-400"
