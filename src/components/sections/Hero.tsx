@@ -15,54 +15,77 @@ const Hero: React.FC = () => {
   const [currentPhrase, setCurrentPhrase] = React.useState(0);
   const [isTyping, setIsTyping] = React.useState(true);
   const [typedLength, setTypedLength] = React.useState(0);
+  const [isPaused, setIsPaused] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true });
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
+  // Function to get a slightly randomized typing speed
+  const getTypingSpeed = React.useCallback(() => {
+    // Base speed between 70-90ms with some randomization
+    return Math.floor(Math.random() * 20) + 70;
+  }, []);
+
+  // Handle typing animation
   React.useEffect(() => {
-    if (!isInView) return;
-
-    const typeInterval = setInterval(() => {
+    if (!isInView || !isTyping || isPaused) return;
+    
+    const typeNextChar = () => {
       if (typedLength < phrases[currentPhrase].length) {
-        setTypedLength(typedLength + 1);
-      } else {
-        setIsTyping(false);
-        clearInterval(typeInterval);
-      }
-    }, 190);
-
-    return () => clearInterval(typeInterval);
-  }, [currentPhrase, typedLength, isInView]);
-
-  React.useEffect(() => {
-    if (!isInView || !isTyping) return;
-
-    const typeInterval = setInterval(() => {
-      if (typedLength < phrases[currentPhrase].length) {
-        setTypedLength(typedLength + 1);
-      } else {
-        setIsTyping(false);
-        clearInterval(typeInterval);
-      }
-    }, 190);
-
-    return () => clearInterval(typeInterval);
-  }, [currentPhrase, typedLength, isInView]);
-
-  React.useEffect(() => {
-    if (isInView && !isTyping) {
-      const eraseInterval = setInterval(() => {
-        if (typedLength > 0) {
-          setTypedLength(typedLength - 1);
-        } else {
-          setIsTyping(true);
-          setCurrentPhrase((prev) => (prev + 1) % phrases.length);
-          clearInterval(eraseInterval);
+        setTypedLength(prev => prev + 1);
+        
+        // Calculate next typing speed based on character context
+        let nextSpeed = getTypingSpeed();
+        
+        // Slow down at the end of words (spaces)
+        if (phrases[currentPhrase][typedLength] === ' ') {
+          nextSpeed += 100; // Pause longer at spaces
         }
-      }, 50);
+        
+        timeoutRef.current = setTimeout(typeNextChar, nextSpeed);
+      } else {
+        // Pause at the end of the phrase before erasing
+        setIsPaused(true);
+        timeoutRef.current = setTimeout(() => {
+          setIsPaused(false);
+          setIsTyping(false);
+        }, 1500); // Pause for 1.5 seconds at the end of each phrase
+      }
+    };
+    
+    timeoutRef.current = setTimeout(typeNextChar, getTypingSpeed());
+    
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [currentPhrase, typedLength, isInView, isTyping, isPaused, getTypingSpeed]);
 
-      return () => clearInterval(eraseInterval);
-    }
-  }, [isInView, isTyping, typedLength]);
+  // Handle erasing animation
+  React.useEffect(() => {
+    if (!isInView || isTyping || isPaused) return;
+    
+    const eraseNextChar = () => {
+      if (typedLength > 0) {
+        setTypedLength(prev => prev - 1);
+        // Erase a bit faster than typing, but still with some variation
+        timeoutRef.current = setTimeout(eraseNextChar, Math.floor(Math.random() * 10) + 40);
+      } else {
+        // Move to the next phrase
+        setIsTyping(true);
+        setCurrentPhrase(prev => (prev + 1) % phrases.length);
+      }
+    };
+    
+    timeoutRef.current = setTimeout(eraseNextChar, 50);
+    
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [isInView, isTyping, typedLength, isPaused]);
 
   return (
     <section className="relative min-h-[90vh] flex items-center bg-slate-900 overflow-hidden">
@@ -92,7 +115,7 @@ const Hero: React.FC = () => {
                   transition={{ duration: 0.5 }}
                 >
                   {phrases[currentPhrase].slice(0, typedLength)}
-                  {typedLength < phrases[currentPhrase].length && <span className={styles.animateBlink}>|</span>}
+                  {typedLength < phrases[currentPhrase].length && <span className={styles.animateBlink}></span>}
                 </motion.span>
               </div>
             </h1>
